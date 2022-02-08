@@ -1,4 +1,4 @@
-# EVO-Turnkey-NodeJS-SDK
+# EVO Payments NodeJS SDK
 This library provides integration access to the EVO Api.
 
 ## Quick Start
