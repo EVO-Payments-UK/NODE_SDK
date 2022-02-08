@@ -1,0 +1,17 @@
+{% extends 'layout_s2s.twig' %}
+
+{% block main_content %}
+    <div class="uk-card uk-height-1-1">
+        <div class="uk-card-body">
+            <h5 class="uk-heading-line"><span>Auth [After tokenize]</span></h5>
+            {% include 'form/purchase.twig' %}
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+      loadjs('/js/s2s.js', function() {
+        initData('{{ page }}');
+      });
+    </script>
+{% endblock %}

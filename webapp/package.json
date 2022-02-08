@@ -1,0 +1,47 @@
+{
+  "name": "webapp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "server": "babel-node ./src/bin/www",
+    "server:prod": "node ./dist/bin/www",
+    "dev": "cross-env NODE_ENV=development npm-run-all clean build server",
+    "prod": "cross-env NODE_ENV=production npm-run-all clean build server:prod",
+    "build": "babel ./src --out-dir dist",
+    "watch": "nodemon",
+    "clean": "rimraf dist",
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/compat-data": "^7.15.0",
+    "@babel/core": "^7.15.8",
+    "@babel/node": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@types/jasmine": "^3.10.0",
+    "babel-polyfill": "^6.26.0",
+    "eslint": "^8.0.1",
+    "jest": "^27.3.1",
+    "jest-serial-runner": "^1.2.0",
+    "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {
+    "axios": "^0.23.0",
+    "config": "^3.3.6",
+    "cookie-parser": "^1.4.5",
+    "cross-env": "^7.0.3",
+    "debug": "^4.3.2",
+    "express": "^4.17.1",
+    "formidable": "^1.2.2",
+    "http-errors": "^1.8.0",
+    "ipg-turnkey-sdk": "file:./ipg-turnkey-sdk-1.0.2.tgz",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.14",
+    "rimraf": "^3.0.2",
+    "twig": "^1.15.4"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "sessionTokenRequestUrl": "https://apiuat.test.evopaymentgateway.com/token",
+  "paymentOperationActionUrl": "https://apiuat.test.evopaymentgateway.com/payments",
+  "cashierUrl": "https://cashierui-apiuat.test.evopaymentgateway.com/ui/cashier",
+  "javaScriptUrl": "https://cashierui-apiuat.test.evopaymentgateway.com/js/api.js",
+  "mobileCashierUrl": "https://cashierui-apiuat.test.evopaymentgateway.com/react-frontend/index.html"
+}

@@ -1,0 +1,47 @@
+{
+  "name": "ipg-turnkey-sdk",
+  "version": "1.0.2",
+  "description": "IPG payments integration",
+  "main": "dist/index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "dev": "npm-run-all build debug",
+    "debug": "node dist/index.js",
+    "start": "npm-run-all build",
+    "build": "babel src -d dist",
+    "prepublish": "npm-run-all build",
+    "test": "jest"
+  },
+  "author": "Kit Han",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.23.0",
+    "config": "^3.3.6",
+    "debug": "^4.3.2",
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/compat-data": "^7.15.0",
+    "@babel/core": "^7.15.8",
+    "@babel/node": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@types/jasmine": "^3.10.0",
+    "babel-polyfill": "^6.26.0",
+    "eslint": "^8.0.1",
+    "jest": "^27.3.1",
+    "jest-serial-runner": "^1.2.0",
+    "npm-run-all": "^4.1.5"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testTimeout": 30000,
+    "runner": "jest-serial-runner"
+  }
+}

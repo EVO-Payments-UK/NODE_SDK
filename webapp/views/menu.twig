@@ -1,0 +1,45 @@
+<ul class="ipg-sidebar-menu uk-nav uk-nav-default uk-margin-small-top">
+    <li>
+        <a href="/" {% if page=='home' %}class="uk-active" {% endif %}>HOME</a>
+    </li>
+    <li class="uk-parent">
+        <a href="javascript:void(0);" class="uk-nav-header">Server-to-Server mode samples</a>
+        <ul class="uk-nav-sub">
+            <li>
+                <a href="/action/tokenize" {% if page == "tokenize" %}class="uk-active" {% endif %}>TOKENIZE</a>
+            </li>
+            <li>
+                <a href="/action/verify" {% if page == 'verify' %}class="uk-active" {% endif %}>VERIFY <span class="uk-label uk-label-secondary uk-label-outline">AFTER TOKENIZE</span></a>
+            </li>
+            <li>
+                <a href="/action/auth" {% if page == 'auth' %}class="uk-active" {% endif %}>AUTH <span class="uk-label uk-label-secondary uk-label-outline">AFTER TOKENIZE</span></a>
+            </li>
+            <li>
+                <a href="/action/purchase" {% if page == 'purchase' %}class="uk-active" {% endif %}>PURCHASE <span class="uk-label uk-label-secondary uk-label-outline">AFTER TOKENIZE</span></a>
+            </li>
+            <li>
+                <a href="/action/capture" {% if page == 'capture' %}class="uk-active" {% endif %}>CAPTURE <span class="uk-label uk-label-secondary uk-label-outline">AFTER AUTH</span></a>
+            </li>
+            <li>
+                <a href="/action/void" {% if page == 'void' %}class="uk-active" {% endif %}>VOID <span class="uk-label uk-label-secondary uk-label-outline">AFTER AUTH</span></a>
+            </li>
+            <li>
+                <a href="/action/refund" {% if page == 'refund' %}class="uk-active" {% endif %}>REFUND <span class="uk-label uk-label-secondary uk-label-outline">AFTER CAPTURE/PURCHASE</span></a>
+            </li>
+            <li>
+                <a href="/action/get_status" {% if page == 'get_status' %}class="uk-active" {% endif %}>GET STATUS</a>
+            </li>
+        </ul>
+    </li>
+    <li class="uk-parent">
+        <a href="javascript:void(0);" class="uk-nav-header">Browser-to-Server mode samples</a>
+        <ul class="uk-nav-sub">
+            <li>
+                <a href="/action/hosted_pay">REDIRECT SAMPLE</a>
+            </li>
+            <li>
+                <a href="/action/iframe_pay">JAVASCRIPT EMBEDDED</a>
+            </li>
+        </ul>
+    </li>
+</ul>

@@ -1,0 +1,49 @@
+<form method="post" onsubmit="return callService()" class="uk-form-horizontal">
+    <fieldset class="uk-fieldset">
+        <p class="uk-form-help-block">note: this form is meant to function as a simple example,
+            normally only some of these parameters are user inputs</p>
+        <input type="hidden" name="action_type" id="action_type" value="{{ page }}"/>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="merchantId">MerchantId</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" name="merchantId" id="merchantId" type="text"
+                       value="{{ merchant.merchantId }}"
+                       data-ipg-input>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="password">Password</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" name="password" id="password" type="text"
+                       value="{{ merchant.password }}"
+                       data-ipg-input>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="country">Country</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" name="country" id="country" type="text"
+                       value="{{ merchant.country }}"
+                       data-ipg-input>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="currency">Currency</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" name="currency" id="currency" type="text"
+                       value="{{ merchant.currency }}"
+                       data-ipg-input>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="originalMerchantTxId">MerchantTxId</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" name="originalMerchantTxId" id="originalMerchantTxId" type="text"
+                       value="" required data-ipg-input>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <button class="uk-button uk-button-secondary" id="submit_btn">Submit</button>
+        </div>
+    </fieldset>
+</form>

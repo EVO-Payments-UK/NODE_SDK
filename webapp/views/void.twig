@@ -1,0 +1,41 @@
+{% extends 'layout_s2s.twig' %}
+
+{% block main_content %}
+    <div class="uk-card uk-height-1-1">
+        <div class="uk-card-body">
+            <h5 class="uk-heading-line"><span>VOID [AFTER AUTH]</span></h5>
+            {% include 'form/void.twig' %}
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+      loadjs('/js/s2s.js', function() {
+        initData('{{ page }}', false);
+      });
+      let formObject = document.querySelector('form');
+
+      callService = () => {
+        axios.post(
+            '/call', new FormData(formObject),
+        ).then(function(res) {
+          document.getElementById('code-editor').value = JSON.stringify(res.data);
+          if (res.data.result == 'redirection') {
+            UIkit.notification('Need 3DS verify, please click the link to open it.', 'danger');
+            UIkit.util.$('#link_text>a').href = UIkit.util.$('#link_text>a').innerText = res.data.redirectionUrl;
+            UIkit.toggle('#extra_link', {'animation': 'uk-animation-fade', 'mode': 'media'}).toggle();
+          } else if (res.data.result == 'success') {
+            // localStorage.setItem('merchantTxId', res.data['merchantTxId']);
+          }
+          console.log(res);
+        }).catch(function(res) {
+          console.log(res);
+            document.getElementById('code-editor').value = JSON.stringify(res.data);
+        }).finally(function(res) {
+
+        });
+        return false;
+      };
+
+    </script>
+{% endblock %}

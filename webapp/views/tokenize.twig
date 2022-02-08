@@ -1,0 +1,93 @@
+{% extends 'layout_s2s.twig' %}
+
+{% block main_content %}
+    <div class="uk-card uk-height-1-1">
+        <div class="uk-card-body">
+            <h5 class="uk-heading-line"><span>Tokenize Call</span></h5>
+            <form method="post" onsubmit="return callService()" class="uk-form-horizontal">
+                <fieldset class="uk-fieldset">
+                    <p class="uk-form-help-block">note: this form is meant to function as a simple example,
+                        normally only some of these parameters are user inputs</p>
+                    <input type="hidden" name="action_type" id="action_type" value="{{ page }}"/>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="merchantId">MerchantId</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" name="merchantId" id="merchantId" type="text"
+                                   value="{{ merchant.merchantId }}"
+                                   data-ipg-input>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="password">Password</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" name="password" id="password" type="text"
+                                   value="{{ merchant.password }}"
+                                   data-ipg-input>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="card-number">Card Number</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="number" name="number" type="text"
+                                   value="{{ merchant.number }}"
+                                   data-ipg-input>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="nameOnCard">Name On Card</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" name="nameOnCard" id="nameOnCard" type="text"
+                                   value="John Doe"
+                                   data-ipg-input>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="expiryMonth">Card issued month</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" name="expiryMonth" id="expiryMonth" type="text"
+                                   value="12"
+                                   data-ipg-input>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="expiryYear">Card issued year</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" name="expiryYear" id="expiryYear" type="text"
+                                   value="2028"
+                                   data-ipg-input>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <button class="uk-button uk-button-secondary" id="submit_btn">Submit</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+      loadjs(['/js/code-editor.js']);
+      callService = () => {
+        let formObject = document.querySelector('form');
+        ipg.helpers.button.showLoading($('#submit_btn'));
+        axios.post(
+            '/call', new FormData(formObject),
+        ).then(function(res) {
+          localStorage.setItem('customerId', res.data['customerId']);
+          localStorage.setItem('cardToken', res.data['cardToken']);
+          localStorage.setItem('cardType', res.data['cardType']);
+          localStorage.setItem('country', res.data['country']);
+          window.editor_json.setValue(JSON.stringify(res.data, null, 4));
+          console.log(res);
+        }).catch(function(res) {
+          console.log(res);
+        }).finally(function() {
+          ipg.helpers.button.hideLoading($('#submit_btn'));
+        });
+        return false;
+      };
+
+
+    </script>
+{% endblock %}

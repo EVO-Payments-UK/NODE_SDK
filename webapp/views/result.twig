@@ -1,0 +1,17 @@
+{% extends 'layout_s2s.twig' %}
+
+{% block main_content %}
+    <div class="uk-card">
+        <div class="uk-card-title"><h1>{{ title }}[{{ merchantTxId }}]</h1></div>
+        <div class="uk-card-body">
+            <p>
+                <textarea name="code-editor" id="code-editor" cols="30" rows="10">{{ response }}</textarea>
+            </p>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+      loadjs(['/js/code-editor.js']);
+    </script>
+{% endblock %}

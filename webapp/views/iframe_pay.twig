@@ -1,0 +1,79 @@
+{% extends 'layout_b2s.twig' %}
+
+{% block main_content %}
+    <div class="uk-card uk-height-1-1">
+        <div class="uk-card-body">
+            <h5 class="uk-heading-line"><span>iFrame Embedded [Pay In iFrame]</span></h5>
+            {% include 'form/iframe_pay.twig' %}
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_div %}
+    <div id="cashier_div" class="uk-margin-medium-bottom">
+        <div class="uk-card">
+            <div class="uk-card-body">
+                <h5 class="uk-heading-line"><span>Content</span></h5>
+                <div class="uk-margin" id="cashierContainer" style="height: 400px">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="uk-margin" id="code_result">
+        <div class="uk-card">
+            <div class="uk-card-body">
+                <h5 class="uk-heading-line"><span>Query Result</span></h5>
+                <div class="uk-margin">
+                    <textarea class="uk-textarea" id="code-editor" cols="30" rows="5"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+      let cashier;
+      loadjs(['/js/code-editor.js']);
+
+      /**
+       * Service request
+       * @returns {boolean}
+       */
+      callService = () => {
+        $('#cashier_div').show('slow');
+        let formObject = document.querySelector('form');
+        ipg.helpers.button.showLoading($('#submit_btn'));
+        axios.post(
+            '/token', new FormData(formObject),
+        ).then(function(res) {
+          console.log(res);
+          loadjs(res.data.js_api_url, function() {
+            cashier = com.myriadpayments.api.cashier();
+            cashier.init({
+              baseUrl: res.data.cashier_url,
+            });
+            if (res.data.result == 'success') {
+              cashier.show({
+                containerId: 'cashierContainer',
+                merchantId: res.data.merchantId,
+                token: res.data.token,
+                successCallback: handleResult,
+                failureCallback: handleResult,
+                cancelCallback: handleResult,
+              });
+            }
+            ipg.helpers.button.hideLoading($('#submit_btn'));
+          });
+        }).catch(function(res) {
+          console.log(res);
+          ipg.helpers.button.hideLoading($('#submit_btn'));
+        });
+        return false;
+      };
+      handleResult = (result, data) => {
+        $('#cashier_div').hide('slow');
+        window.editor_json.setValue(JSON.stringify(data, null, 4));
+      };
+
+    </script>
+{% endblock %}

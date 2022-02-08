@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/css/uikit.min.css">
+    <link rel="stylesheet" href="/css/theme_e.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- UIKit js -->
+    <script src="/js/uikit.min.js"></script>
+</head>
+<body class="ipg-theme">
+<div class="uk-padding-small md-bg-grey-50 uk-active" id="ipg-header" uk-sticky="offset: 0;">
+    <div class="uk-container">
+        <h5>{{ title }}</h5>
+    </div>
+</div>
+<div class="uk-container uk-margin-medium">
+    <div class="uk-grid uk-child-width-1-1" data-uk-grid>
+        {% block main_body %}
+        {% endblock %}
+    </div>
+</div>
+<script src="/js/loadjs.min.js"></script>
+<script>
+  const IPG_PAGE_READY = 'IPG_PAGE_READY';
+  loadjs(['/js/vendor.min.js', '/js/uikit-icons.min.js', '/js/axios.min.js'], function() {
+    loadjs('/js/utils.js', function() {
+      dispatchEvent(new Event(IPG_PAGE_READY));
+    });
+  });
+</script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

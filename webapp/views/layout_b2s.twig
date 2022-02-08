@@ -1,0 +1,19 @@
+{% extends 'layout.twig' %}
+{% block main_body %}
+    <div>
+        <div class="uk-grid">
+            <div class="uk-width-1-4 uk-visible@l uk-grid-item-match">
+                <div class="uk-flex uk-flex-column uk-height-1-1" id="sc-js-invoices-list">
+                    <div class="uk-card uk-card-body sc-js-el-hide uk-flex-1" data-sc-scrollbar="visible-y">
+                        {% include './menu.twig' %}
+                    </div>
+                    <hr class="uk-margin-remove">
+                </div>
+            </div>
+            <div class="uk-width-3-4 uk-grid-item-match">
+                {% block main_content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    {% block bottom_div %}{% endblock %}
+{% endblock %}

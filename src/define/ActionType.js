@@ -1,0 +1,17 @@
+const ActionType = {
+  TOKENIZE: 'TOKENIZE',
+  AUTH: 'AUTH',
+  CAPTURE: 'CAPTURE',
+  VOID: 'VOID',
+  PURCHASE: 'PURCHASE',
+  REFUND: 'REFUND',
+  GET_AVAILABLE_PAYSOLS: 'GET_AVAILABLE_PAYSOLS',
+  GET_STATUS: 'GET_STATUS',
+  VERIFY: 'VERIFY',
+  GET_MOBILE_CASHIER_URL: 'GET_MOBILE_CASHIER_URL',
+};
+
+/**
+ * Type of actions.
+ */
+export default ActionType;
