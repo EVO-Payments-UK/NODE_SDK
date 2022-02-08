@@ -17,5 +17,5 @@ Run `npm run dev` or `npm run watch` to start web server.
 Visit [http://127.0.0.1:3000](http://127.0.0.1:3000)
 
 #### Merchant Info for demo site
-Default merchant info is defined in `webapp/src/routes/indes.js`, it can be modified in the file or just input it in the form.
+Default merchant info is defined in `webapp/src/routes/index.js`, it can be modified in the file or just input it in the form.
 
