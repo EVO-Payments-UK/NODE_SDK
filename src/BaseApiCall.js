@@ -72,7 +72,7 @@ export default class BaseApiCall extends ApiCall {
    */
   token = async () => {
     this.preValidateParams();
-    const tokenRequest = new TokenRequest(this.tokenParams, this.actionType);
+    const tokenRequest = new TokenRequest(this.tokenParams, this.actionType, this.apiPathConfig);
     const tokenResponse = await tokenRequest.execute().
         catch(function(response) {
           throw new TokenRequestException();
@@ -92,7 +92,7 @@ export default class BaseApiCall extends ApiCall {
     if (tokenResponse.result === 'success') {
       const actionRequest = new ActionRequest(Object.assign(this.actionParams, {
         'token': tokenResponse.token,
-      }), this.actionType);
+      }), this.actionType, this.apiPathConfig);
       const actionResponse = await actionRequest.execute().
           catch(function(error) {
             throw new ActionRequestException();
