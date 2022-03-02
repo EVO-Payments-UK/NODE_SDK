@@ -38,7 +38,6 @@
     "express": "^4.17.1",
     "formidable": "^1.2.2",
     "http-errors": "^1.8.0",
-    "ipg-turnkey-sdk": "file:./ipg-turnkey-sdk-1.0.2.tgz",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.14",
     "rimraf": "^3.0.2",

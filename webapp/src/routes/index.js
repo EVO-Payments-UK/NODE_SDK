@@ -8,7 +8,7 @@ import {
   RefundCall,
   GetStatusCall,
   VerifyCall,
-} from 'ipg-turnkey-sdk';
+} from '../../../dist/';
 import formidable from 'formidable';
 import querystring from 'querystring';
 

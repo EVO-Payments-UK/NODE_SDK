@@ -19,7 +19,7 @@ describe('testing status check endpoint', () => {
     veryBasicRequestParams.merchantTxId = 'yAzXebHM5ksJfZQQ3l8G';
     const response = await new GetStatusCall(veryBasicRequestParams).execute();
     expect(response.result).toEqual('success');
-    expect(response.merchantId).toEqual(167862);
+    expect(response.merchantId).toEqual(168678);
   });
 
 });

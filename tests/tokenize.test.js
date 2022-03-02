@@ -21,7 +21,7 @@ describe('testing verify request:', () => {
 
     it('use invalid card number', async () => {
         veryBasicRequestParams.number = 'aa';
-        veryBasicRequestParams.nameOnCard = 'Jakub Sokolowski';
+        veryBasicRequestParams.nameOnCard = 'John Murphy';
         veryBasicRequestParams.expiryMonth = '12';
         veryBasicRequestParams.expiryYear = 2025;
         try {
@@ -40,7 +40,7 @@ describe('testing verify request:', () => {
         veryBasicRequestParams.number = '4111111111111111';
         const response = await new TokenizeCall(veryBasicRequestParams).execute();
         expect(response.cardToken).not.toEqual(null);
-        expect(response.merchantId).toEqual('800261');
+        expect(response.merchantId).toEqual('168678');
         expect(response.result).toEqual('success');
     });
 

@@ -29,7 +29,7 @@ describe('testing token request:', function () {
 
     it('missing all params despite merchantId', async () => {
         try {
-            await new TokenizeCall({merchantId: 167885}).token();
+            await new TokenizeCall({merchantId: 168678}).token();
         } catch (response) {
             expect(response.message).toEqual('Missing parameters');
             expect(response).toBeInstanceOf(RequiredParamException);
@@ -48,7 +48,7 @@ describe('testing token request:', function () {
 
     it('missing all params despite merchantId and expiryYear', async () => {
         try {
-            await new TokenizeCall({merchantId: 167885, expiryYear: '20'}).token();
+            await new TokenizeCall({merchantId: 168678, expiryYear: '20'}).token();
         } catch (response) {
             expect(response.message).toEqual('Missing parameters');
             expect(response).toBeInstanceOf(RequiredParamException);
@@ -67,7 +67,7 @@ describe('testing token request:', function () {
     it('success token request', async () => {
         const response = await new TokenizeCall(tokenizeRequestParams).token();
         expect(response.result).toEqual('success');
-        expect(response.merchantId).toEqual('800261');
+        expect(response.merchantId).toEqual('168678');
         expect(response.token).not.toEqual(null);
     });
 
