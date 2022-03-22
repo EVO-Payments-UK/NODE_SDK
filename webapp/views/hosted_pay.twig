@@ -11,7 +11,7 @@
 {% block extra_js %}
     <script>
       loadjs('/js/s2s.js', function() {
-        initData('{{ page }}');
+        initData('{{ page }}', false);
       });
     </script>
 {% endblock %}
