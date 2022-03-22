@@ -57,6 +57,9 @@ callService = () => {
                 case 'hosted_pay':
                     window.location.href = res.data['redirect_url'];
                     break;
+				case 'standalone_pay':
+                    window.location.href = res.data['redirect_url'];
+                    break;
             }
         }
         console.log(res);

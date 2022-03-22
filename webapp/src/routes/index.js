@@ -94,20 +94,30 @@ router.post('/call', function(req, res, next) {
       return;
     }
     let call;
-    if (fields['action_type'] == 'hosted_pay') {
+    if ((fields['action_type'] == 'hosted_pay') || (fields['action_type'] == 'standalone_pay')) {
       const landingUrl = `${serverConfig['merchantNotificationUrl']}/${fields['merchantTxId']}`;
       serverConfig['merchantLandingPageUrl'] = landingUrl;
       serverConfig['merchantNotificationUrl'] = landingUrl;
       call = new PurchaseCall(Object.assign(fields, serverConfig));
       call.token().then(function(response) {
         console.log(response);
-        const cashier_params = {
-          'merchantId': fields['merchantId'],
-          'token': response.token,
-          'integrationMode': 'hostedPayPage',
-        };
-        response['redirect_url'] = `${call.cashierUrl}?${querystring.stringify(
-            cashier_params)}`;
+		if (fields['action_type'] == 'hosted_pay') {
+			const cashier_params = {
+			  'merchantId': fields['merchantId'],
+			  'token': response.token,
+			  'integrationMode': 'hostedPayPage',
+			};
+			response['redirect_url'] = `${call.cashierUrl}?${querystring.stringify(
+				cashier_params)}`;
+		} else {
+			const cashier_params = {
+				'merchantId': fields['merchantId'],
+				'token': response.token,
+				'integrationMode': 'Standalone',
+			};
+			response['redirect_url'] = `${call.cashierUrl}?${querystring.stringify(
+				cashier_params)}`;
+		}
         res.json(response);
       }).catch(function(response) {
         console.log(response);

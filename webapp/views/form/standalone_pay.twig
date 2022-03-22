@@ -1,0 +1,81 @@
+<form method="post" onsubmit="return callService()" class="uk-form-horizontal">
+    <fieldset class="uk-fieldset">
+        <p class="uk-form-help-block">note: this form is meant to function as a simple example,
+            normally only some of these parameters are user inputs</p>
+        <input type="hidden" name="action_type" id="action_type" value="{{ page }}"/>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="merchantId">MerchantId</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" name="merchantId" id="merchantId" type="text"
+                       value="{{ merchant.merchantId }}"
+                       data-ipg-input>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="password">Password</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" name="password" id="password" type="text"
+                       value="{{ merchant.password }}"
+                       data-ipg-input>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="amount">Amount</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" id="amount" name="amount" type="number"
+                       value="23"
+                       data-ipg-input>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="channel">Channel</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" name="channel" id="channel" type="text"
+                       value="ECOM"
+                       data-ipg-input>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="country">Country</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" name="country" id="country" type="text"
+                       value="{{ merchant.country }}"
+                       data-ipg-input>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="currency">Currency</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" name="currency" id="currency" type="text"
+                       value="{{ merchant.currency }}"
+                       data-ipg-input>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="paymentSolutionId">paymentSolutionId</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" name="paymentSolutionId" id="paymentSolutionId"
+                       type="text"
+                       value="500"
+                       data-ipg-input>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="merchantTxId">merchantTxId</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" name="merchantTxId" id="merchantTxId" type="text"
+                       value="{{ merchantTxId }}" data-ipg-input>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="language">Language</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" name="language" id="language" type="text"
+                       value="en" data-ipg-input>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <button class="uk-button uk-button-secondary" id="submit_btn">Submit</button>
+        </div>
+    </fieldset>
+</form>
